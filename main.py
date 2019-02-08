@@ -1,4 +1,4 @@
 from user import *
 # Einstiegspunkt des Quiz!
 userInput = input("Spieler-Name : ")
-player = User(userInput)
+player = User(userInput,0)
