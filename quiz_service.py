@@ -1,14 +1,14 @@
-from question_service import Questions
+from question_service import *
 import random
 
 class Quiz_Ablauf:
     
     global fragen_liste                                     
-    fragen_liste = [1,2,3,4,5,6,7,8,9,10]
+    fragen_liste = [1,2,3]
 
     def fragen_auswahl(self):                               
         global ausgewählte_frage
-        ausgewählte_frage = random.randint(1,10)
+        ausgewählte_frage = random.randint(1,3)
         anzahl_der_fragen = len(fragen_liste)
         zähler = 0
         for item in fragen_liste:                           
@@ -16,21 +16,27 @@ class Quiz_Ablauf:
                 fragen_liste.remove(ausgewählte_frage)
             zähler += 1
         if anzahl_der_fragen == len(fragen_liste):
-            fragen_auswahl()
+            self.fragen_auswahl()
     
     def start(self):
+        global score
+        global spielername
         x = 1
         score = 0
         frage = Questions(0)
-        username = input("Spielername: ")
-        while x <= 10:
+        spielername = input("Spielername: ")
+        while x <= 3:
             self.fragen_auswahl()
             if ausgewählte_frage == 1:
                 score += frage.frage1()
             if ausgewählte_frage == 2:
                 score += frage.frage2()
             if ausgewählte_frage == 3:
-                score += frage.frage3()
+                try:
+                    score += frage.frage3()
+                except TypeError:
+                    score -= 1
+                    print("Ungültige Angabe! -1 Score!")
             if ausgewählte_frage == 4:
                 score += frage.frage4()
             if ausgewählte_frage == 5:
@@ -46,5 +52,10 @@ class Quiz_Ablauf:
             if ausgewählte_frage == 10:
                 score += frage.frage10()
             x += 1
-        
+        self.result()
     
+    def result(self):
+        path = "HighScore.txt"
+        with open(path,"a") as file:
+            file.write(f"Spieler : {spielername} Score : {score}\n")
+            print(f"Spieler : {spielername} Score : {score}")
