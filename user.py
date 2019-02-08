@@ -1,6 +1,4 @@
-from quiz_service import *
 class User:
-    def __init__(self, name,score):
+    def __init__(self, name):
         self.name = name
-        self.score = score
         print(self.name)
