@@ -1,1 +1,1 @@
-# Einstiegspunkt des Quiz und Kevin hat jetzt was kaputt gemacht!!
+# Einstiegspunkt des Quiz, Sophie will was kaputt machen!!
