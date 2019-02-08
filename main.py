@@ -1,1 +1,1 @@
-# Einstiegspunkt des Quiz, Sophie will was kaputt machen!!
+# Einstiegspunkt des Quiz!
