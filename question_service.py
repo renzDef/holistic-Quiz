@@ -36,4 +36,4 @@ class Questions:
                 print("Falsch!")
                 return 0
         except ValueError:
-            print("Ungültige Angabe! -1 Score!")
+            pass

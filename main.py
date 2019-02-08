@@ -1,4 +1,4 @@
-from user import *
+from quiz_service import *
 # Einstiegspunkt des Quiz!
-userInput = input("Spieler-Name : ")
-player = User(userInput,0)
+quiz = Quiz_Ablauf()
+quiz.start()
