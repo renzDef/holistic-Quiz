@@ -1,9 +1,11 @@
 from question_service import *
-import random
+import random, os
 
 class Quiz_Ablauf:
     
-    global fragen_liste                                     
+    global fragen_liste
+    global textZeilen
+    textZeilen = []
     fragen_liste = [1,2,3]
 
     def fragen_auswahl(self):                               
@@ -56,6 +58,63 @@ class Quiz_Ablauf:
     
     def result(self):
         path = "HighScore.txt"
+        remake = 0
+
+        with open(path,"r") as file:
+            textZeilen = file.readlines()
+            if len(textZeilen) == 0:
+                setHighScore = 2
+            else:
+                setHighScore = 0
+        
         with open(path,"a") as file:
-            file.write(f"Spieler : {spielername} Score : {score}\n")
-            print(f"Spieler : {spielername} Score : {score}")
+            if setHighScore == 0:
+                x = 0
+                highscoreFound = 0
+                remake = 0
+                for item in textZeilen:
+                    if highscoreFound == 0:
+                        try:
+                            text1,text2 = textZeilen[x].split("\t")
+                            if text2 == "(HIGHSCORE)\n":
+                                highscoreFound = 1
+                                if highscoreFound == 1:
+                                    textHalter = text1[len(text1)-2:len(text1)]
+                                    textHalter = textHalter.split(" ")
+                                    if score > int(textHalter[1]):
+                                        textZeilen.pop(x)
+                                        textZeilen.insert(x,text1+"\n")
+                                        setHighScore = 1
+                                        remake = 1
+                        except ValueError:
+                            pass
+                        x+=1
+                    else:
+                        pass
+
+                if setHighScore == 0:
+                    textZeilen.append(f"Spieler : {spielername} Score : {score} \n")
+                    print(f"Spieler : {spielername} Score : {score}")
+                    remake = 1
+
+        if remake == 1:
+            if os.path.exists(path):
+                os.remove(path)
+            else:
+                print("Datei nicht gefunden!")
+            
+        with open(path,"w") as file:
+            if setHighScore == 1:
+                textZeilen.append(f"Spieler : {spielername} Score : {score}\t(HIGHSCORE)\n")
+                print(f"Spieler : {spielername} Score : {score}")
+                print("Sie haben einen neuen HighScore erreicht!")
+            if setHighScore == 2:
+                file.write("Liste:\n")
+                file.write(f"Spieler : {spielername} Score : {score}\t(HIGHSCORE)\n")
+                print(f"Spieler : {spielername} Score : {score}")
+                print("Sie haben einen neuen HighScore erreicht!")
+            if remake == 1:
+                loop = 0
+                for item in textZeilen:
+                    file.write(textZeilen[loop])
+                    loop += 1
