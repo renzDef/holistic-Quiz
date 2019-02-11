@@ -109,7 +109,7 @@ class Questions:
                 print("Richtig! ")
                 return 1
             else:
-                print("Falsch!")
+                print("Falsch!\nDie richtige Antwort ist: 1939")
                 return 0
         except ValueError:
             pass

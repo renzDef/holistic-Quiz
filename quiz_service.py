@@ -23,10 +23,13 @@ class Quiz_Ablauf:
         global spielername
         x = 1
         score = 0
+        fehler_zähler = 0
+        punkte_zähler = 0
         frage = Questions(0)
         spielername = input("Spielername: ")
         while x <= 10:
             self.fragen_auswahl()
+            score_vorher = score
             try:
                 if ausgewählte_frage == 1:
                     score += frage.frage1()
@@ -52,6 +55,32 @@ class Quiz_Ablauf:
                     score -= 1
                     print("Ungültige Angabe! -1 Score!")
             x += 1
+            if score_vorher == score + 1:
+                fehler_zähler += 1
+                punkte_zähler = 0
+            if score_vorher == score - 1:
+                punkte_zähler += 1
+                fehler_zähler = 0
+            else: 
+                fehler_zähler = 0
+                punkte_zähler = 0
+            if fehler_zähler == 3:     
+                score -= 1
+            if fehler_zähler == 5:    
+                score -= 2
+            if fehler_zähler == 8:   
+                score -= 3
+            if fehler_zähler == 10:   
+                score -= 4
+            if punkte_zähler == 3:    
+                score += 1
+            if punkte_zähler == 5:     
+                score += 2
+            if punkte_zähler == 8: 
+                score += 3
+            if punkte_zähler == 10:    
+                score += 4
+
         self.result()
     
     def result(self):
