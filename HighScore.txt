@@ -1,1 +1,15 @@
-Spieler : asd Score : 2Spieler : D Score : 3
+Spieler : asd Score : 2Spieler : D Score : 3Spieler : sd Score : 10
+Spieler : fgh Score : 10
+Spieler : asd Score : 10
+Spieler : asd# Score : 2
+Spieler : asd Score : -1
+Spieler : dfg Score : -3
+Spieler : asd Score : -8
+Spieler : asd Score : -8
+Spieler : sad Score : -8
+Spieler : 1 Score : 1
+Spieler : asd Score : -10
+Spieler : 1 Score : -1
+Spieler : 2 Score : 0
+Spieler : 3 Score : -1
+Spieler : 4 Score : -1
