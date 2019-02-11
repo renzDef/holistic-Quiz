@@ -1,5 +1,0 @@
-Liste:
-Spieler : Sophie Score : 2
-Spieler : Kamikaze Score : 2 
-Spieler : Kevin Score : 3	(HIGHSCORE)
-Spieler : noob Score : -1 
