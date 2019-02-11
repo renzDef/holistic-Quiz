@@ -1,7 +1,0 @@
-min. 10 fragen                                  - Kevin     :
-quizfunktion erstellen                          - Sophie    : 2 frage2() : frage1 - frage10()
-1 einstiegspunkt (program.java)
-spielerobjekt an quizfunktion �bergeben
-spieler bekommt punkte pro frage
-endstand + spielername in datei speichern
-endstand ausgeben, highscore (erreicht)
